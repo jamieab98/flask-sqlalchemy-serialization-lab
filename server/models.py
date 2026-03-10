@@ -54,8 +54,8 @@ class ReviewSchema(Schema):
     customer_id = fields.Int(required=True)
     item_id = fields.Int(required=True)
 
-    customer = fields.Nested(lambda: CustomerSchema(), exclude=('reviews', 'items'))
-    item = fields.Nested(lambda: ItemSchema(), exclude=('reviews',))
+    customer = fields.Nested(lambda: CustomerSchema(), exclude=('reviews',), dump_only=True)
+    item = fields.Nested(lambda: ItemSchema(), exclude=('reviews',), dump_only=True)
 
 class ItemSchema(Schema):
     id = fields.Int(dump_only=True)
